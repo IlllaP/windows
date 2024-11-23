@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for windows on 2024-11-23T06:20:04Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'windows'
+primary_region = 'waw'
+
+[build]
+
+[[mounts]]
+  source = 'storage'
+  destination = '/storage'
+
+[http_service]
+  internal_port = 8006
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 4
+  memory_mb = 8192
